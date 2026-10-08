@@ -23,7 +23,7 @@ export function ProductCard({ product }: { product: typeof products[number] }) {
   return <article className="product-card"><Link to="/collections/$productId" params={{ productId: product.id }} className="product-image"><img src={product.image} alt={product.name} loading="lazy"/><span className="image-link"><ArrowUpRight size={20}/></span></Link><div className="product-info"><p className="eyebrow">{product.category}</p><Link to="/collections/$productId" params={{ productId: product.id }}><h3>{product.name}</h3></Link><p className="product-material">{product.material}</p><EnquiryButton name={product.name}/></div></article>;
 }
 export function TrustStrip() {
-  return <div className="trust-strip"><span><Gem size={22}/>GIA & IGI Certified Diamonds</span><span>Natural Diamonds & Fine Gold</span><span>Authentic Craftsmanship</span><span>Hyderabad & Mumbai</span></div>;
+  return <div className="trust-strip"><span><Gem size={22}/>GIA & IGI Certified Diamonds</span><span>Natural Diamonds & Fine Gold</span><span>Authentic Craftsmanship</span></div>;
 }
 export function ConsultationBand() {
   return <section className="consultation-band"><div><p className="eyebrow">AS UNIQUE AS YOU</p><h2>A jewel. A memory. <em>A lifetime.</em></h2><p>Let us bring your vision to life, one exquisite detail at a time.</p></div><Button asChild className="gold-button"><Link to="/consultation">Begin Your Bespoke Journey <ArrowUpRight/></Link></Button></section>;
