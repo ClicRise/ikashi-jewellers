@@ -1,0 +1,4 @@
+- [x] Build five Ikashi Jewels pages with uploaded brand and jewellery imagery.
+- [x] Include additional yellow sapphire/topaz necklace set (8.png).
+- [x] Add item-specific WhatsApp enquiries, consultation and direct contact links.
+- [x] Verify pages, images and enquiry flow.

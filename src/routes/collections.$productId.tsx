@@ -1,0 +1,9 @@
+import { createFileRoute, Link, notFound } from '@tanstack/react-router';
+import { ArrowLeft, Gem, Sparkles } from 'lucide-react';
+import { products, pageHead } from '@/lib/jewellery';
+import { EnquiryButton, ProductCard } from '@/components/jewellery';
+export const Route = createFileRoute('/collections/$productId')({ loader: ({ params }) => { const product = products.find(p => p.id === params.productId); if (!product) throw notFound(); return product; }, head: ({ loaderData }) => pageHead(loaderData?.name ?? 'Piece Not Found', loaderData?.description ?? 'Discover the Ikashi Jewels collection.'), component: ProductDetail });
+function ProductDetail() {
+  const product = Route.useLoaderData();
+  return <main className="section-wrap detail-page"><Link to="/collections" className="back-link"><ArrowLeft size={16}/>Back to collections</Link><div className="detail-grid"><img className="detail-image" src={product.image} alt={product.name}/><div className="detail-copy"><p className="eyebrow">{product.category}</p><h1>{product.name}</h1><p>{product.description}</p><div className="specifications"><h2>THE FINER DETAILS</h2><p><Sparkles size={18}/>{product.material}</p><p><Gem size={18}/>GIA / IGI certification details on enquiry</p><p>Gold purity, gemstone identity and carat weights will be confirmed by our jewellery team for this piece.</p></div><EnquiryButton name={product.name}/><p className="small-note">A personal conversation. A piece that is truly yours.</p></div></div><div className="section-title"><p className="eyebrow">CONTINUE YOUR DISCOVERY</p><h2>You may also <em>love.</em></h2></div><div className="product-grid">{products.filter(p => p.id !== product.id).slice(0,3).map(p => <ProductCard key={p.id} product={p}/>)}</div></main>;
+}
