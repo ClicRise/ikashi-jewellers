@@ -8,6 +8,7 @@ import seven from '@/assets/7.png';
 import eight from '@/assets/8.png';
 import nine from '@/assets/9.png';
 import ten from '@/assets/10.png';
+import crimsonHaloSet from '@/assets/crimson-halo-set.png';
 
 export const whatsapp = (message = 'Hello, I would like to enquire about Ikashi Jewels') => `https://wa.me/919989623276?text=${encodeURIComponent(message)}`;
 export const instagram = 'https://www.instagram.com/ikashijewels/';
@@ -23,6 +24,7 @@ export const products = [
   { id: 'golden-muse', name: 'The Golden Muse Necklace Set', category: 'Necklaces & Sets', image: eight, material: 'Yellow sapphire / topaz · Diamond detailing', description: 'Warm yellow gemstones are woven into a cascade of floral diamond detailing. A radiant necklace set for your most meaningful celebrations. Exact yellow gemstone identity is available on enquiry.' },
   { id: 'royal-bridal', name: 'The Rajsi Bridal Choker', category: 'Bridal Couture', image: nine, material: 'Green accents · Pearl drops · Heritage gold setting', description: 'An opulent statement choker with heritage-inspired craftsmanship, intricate motifs and cascading pearl details.' },
   { id: 'diamond-rain', name: 'The Diamond Rain Pendant Set', category: 'Necklaces & Sets', image: ten, material: 'Diamond detailing · Tassel pendant & earrings', description: 'A delicate necklace with a cascading pendant and matching earrings. Modern lines meet timeless brilliance.' },
+  { id: 'crimson-halo-set', name: 'The Crimson Halo Necklace Set', category: 'Necklaces & Sets', image: crimsonHaloSet, material: 'Red gemstone detailing · Halo accents', description: 'A statement necklace of vivid red oval stones framed by sparkling halo details, paired with matching earrings. Gemstone identity, metal purity and certification can be confirmed on enquiry.' },
 ] as const;
 export function pageHead(title: string, description: string) {
   return { meta: [{ title: `${title} | Ikashi Jewels` }, { name: 'description', content: description }, { property: 'og:title', content: `${title} | Ikashi Jewels` }, { property: 'og:description', content: description }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] };
