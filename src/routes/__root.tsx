@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -113,13 +114,40 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const isHomePage = pathname === "/" || pathname === "";
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <SiteHeader />
-      <Outlet />
-      <SiteFooter />
+      {isHomePage ? (
+        <>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <SiteHeader />
+          <Outlet />
+          <SiteFooter />
+        </>
+      ) : (
+        <main className="flex min-h-screen items-center justify-center bg-background px-6 py-16">
+          <section className="max-w-lg text-center">
+            <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
+              Ikashi Jewels
+            </p>
+            <h1 className="mt-5 font-serif text-4xl font-medium text-foreground sm:text-5xl">
+              Demo preview
+            </h1>
+            <p className="mt-4 text-base leading-7 text-muted-foreground">
+              For this client demo, only the home page is available. Please return
+              to the home page to continue browsing.
+            </p>
+            <Link
+              to="/"
+              className="mt-8 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Return to home
+            </Link>
+          </section>
+        </main>
+      )}
     </QueryClientProvider>
   );
 }
